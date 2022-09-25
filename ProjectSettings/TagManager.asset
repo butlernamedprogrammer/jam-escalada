@@ -3,15 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Level
+  - Pickable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pickable
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
@@ -40,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1958226245
+    locked: 0
+  - name: Menu Options
+    uniqueID: 2202594103
     locked: 0
