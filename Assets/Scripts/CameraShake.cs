@@ -9,6 +9,8 @@ public class CameraShake : MonoBehaviour
     public bool shake;
     public CinemachineBasicMultiChannelPerlin camShake;
     public Transform camTransform;
+    public float frecuencia;
+    public float amplitud;
     private Vector3 _originalCamPos;
     public float shakeFreq;
 
@@ -35,8 +37,8 @@ public class CameraShake : MonoBehaviour
         }
         else
         {
-            camShake.m_FrequencyGain = 2f;
-            camShake.m_AmplitudeGain = 1f;
+            camShake.m_FrequencyGain = frecuencia;
+            camShake.m_AmplitudeGain = amplitud;
         }
     }
 

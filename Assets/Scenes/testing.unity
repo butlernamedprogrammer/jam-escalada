@@ -155,12 +155,12 @@ BuoyancyEffector2D:
     serializedVersion: 2
     m_Bits: 128
   m_SurfaceLevel: 0
-  m_Density: 2
+  m_Density: 3
   m_LinearDrag: 5
   m_AngularDrag: 5
-  m_FlowAngle: 0
-  m_FlowMagnitude: 0
-  m_FlowVariation: 0
+  m_FlowAngle: 90
+  m_FlowMagnitude: 10
+  m_FlowVariation: 5
 --- !u!212 &128546386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -221,8 +221,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128546384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6, y: 0.28999996, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -238,8 +238,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -286,11 +286,11 @@ BuoyancyEffector2D:
     serializedVersion: 2
     m_Bits: 128
   m_SurfaceLevel: 0
-  m_Density: 2
+  m_Density: 3
   m_LinearDrag: 5
   m_AngularDrag: 5
-  m_FlowAngle: 0
-  m_FlowMagnitude: 0
+  m_FlowAngle: 270
+  m_FlowMagnitude: 10
   m_FlowVariation: 0
 --- !u!212 &327552912
 SpriteRenderer:
@@ -352,8 +352,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327552910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2, y: 0.28999996, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -369,8 +369,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -832,7 +832,8 @@ GameObject:
   - component: {fileID: 888255925}
   - component: {fileID: 888255924}
   - component: {fileID: 888255927}
-  m_Layer: 0
+  - component: {fileID: 888255928}
+  m_Layer: 7
   m_Name: Square
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -940,7 +941,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888255923}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -953,6 +954,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!253 &888255928
+BuoyancyEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888255923}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_SurfaceLevel: 0
+  m_Density: 2
+  m_LinearDrag: 5
+  m_AngularDrag: 5
+  m_FlowAngle: 0
+  m_FlowMagnitude: 0
+  m_FlowVariation: 0
 --- !u!1 &1040805551
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +1008,8 @@ MonoBehaviour:
   shake: 0
   camShake: {fileID: 0}
   camTransform: {fileID: 1040805555}
+  frecuencia: 5
+  amplitud: 1
   shakeFreq: 0.2
 --- !u!95 &1040805553
 Animator:
@@ -1466,10 +1488,10 @@ BuoyancyEffector2D:
     serializedVersion: 2
     m_Bits: 128
   m_SurfaceLevel: 0
-  m_Density: 2
+  m_Density: 4
   m_LinearDrag: 5
   m_AngularDrag: 5
-  m_FlowAngle: 0
+  m_FlowAngle: 270
   m_FlowMagnitude: 0
   m_FlowVariation: 0
 --- !u!212 &1214719621
@@ -1550,7 +1572,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1577,7 +1599,7 @@ GameObject:
   - component: {fileID: 1300430579}
   - component: {fileID: 1300430578}
   - component: {fileID: 1300430581}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plataforma
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -1772,7 +1794,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.22297594, b: 0, a: 0.7294118}
+  m_Color: {r: 1, g: 0.22297594, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1855,10 +1877,10 @@ BuoyancyEffector2D:
     serializedVersion: 2
     m_Bits: 128
   m_SurfaceLevel: 0
-  m_Density: 2
+  m_Density: 4
   m_LinearDrag: 5
   m_AngularDrag: 5
-  m_FlowAngle: 0
+  m_FlowAngle: 270
   m_FlowMagnitude: 0
   m_FlowVariation: 0
 --- !u!212 &1817019665
@@ -1939,7 +1961,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:

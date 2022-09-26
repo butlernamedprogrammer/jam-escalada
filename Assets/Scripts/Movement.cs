@@ -53,6 +53,10 @@ public class Movement : MonoBehaviour
         {
             movementInput = Vector2.zero;
         }
+        if (!dead)
+        {
+            CheckPickable();
+        }
         if (!canPickUp)
         {
             pickedObject.transform.position = transform.position + pickupOffset;
@@ -65,7 +69,7 @@ public class Movement : MonoBehaviour
         if (!dead)
         {
             Move();
-            CheckPickable();
+           
         }
 
         if (movementInput.x < 0)
@@ -158,7 +162,7 @@ public class Movement : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Q) && !canPickUp)
+        if (Input.GetKey(KeyCode.Q) && !canPickUp)
         {
             canPickUp = true;
             pickedObject.transform.SetParent(null);
