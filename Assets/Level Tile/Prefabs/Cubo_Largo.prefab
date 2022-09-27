@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3148510061869800979}
   m_Layer: 0
   m_Name: Cubo_Largo
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1550249477
-  m_SortingLayer: 2
+  m_SortingLayerID: -1377456069
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 403dbca85599db9419b43c456a9c8a11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7783244700642147354}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 633158d27020ec4489600abb2a767ce6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

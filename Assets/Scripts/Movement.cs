@@ -14,12 +14,16 @@ public class Movement : MonoBehaviour
     bool dead;
     [SerializeField, Min(4f)]
     float movementSpeed;
+    [SerializeField, Min(4f)]
+    float movementSpeedCarrying;
     [SerializeField]
     float decelerationSpeed = 0.5f;
     [SerializeField]
     float airMovMod = 0.5f;
     [SerializeField, Min(3)]
-    int jumpForce;
+    float jumpForce;
+    [SerializeField, Min(3)]
+    float jumpForceCarrying;
     [SerializeField, Min(1f)]
     float pickupDistance;
     [SerializeField]
@@ -96,11 +100,12 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
+        float movSpeed = canPickUp ? movementSpeed : movementSpeedCarrying;
         if (movementInput.x == 0)
         {
             body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, decelerationSpeed * Time.deltaTime), body.velocity.y);
         }
-        body.AddForce((canJump ? movementInput * movementSpeed : movementInput * (movementSpeed * airMovMod)), ForceMode2D.Force);
+        body.AddForce((canJump ? movementInput * movSpeed : movementInput * (movSpeed * airMovMod)), ForceMode2D.Force);
         if (wantJump)
         {
             Jump();
@@ -113,7 +118,14 @@ public class Movement : MonoBehaviour
     {
         if (canJump)
         {
-            body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            if (canPickUp)
+            {
+                body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                body.AddForce(Vector2.up * jumpForceCarrying, ForceMode2D.Impulse);
+            }
             canJump = false;
         }
     }
@@ -144,7 +156,7 @@ public class Movement : MonoBehaviour
             {
 
                 canPickUp = true;
-                pickedObject.transform.position = transform.position + new Vector3((pickingDirection.x * pickedObject.transform.localScale.x), 0, 0);
+                pickedObject.transform.position = transform.position + Vector3.up + new Vector3((pickingDirection.x * pickedObject.transform.localScale.x), 0, 0)*0.75f;
                 Rigidbody2D auxBody = pickedObject.GetComponent<Rigidbody2D>();
                 auxBody.constraints = RigidbodyConstraints2D.None;
                 pickedObject.transform.SetParent(null);
