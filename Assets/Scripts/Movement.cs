@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     float movementSpeed;
     [SerializeField]
     float decelerationSpeed = 0.5f;
+    [SerializeField]
+    float airMovMod = 0.5f;
     [SerializeField, Min(3)]
     int jumpForce;
     [SerializeField, Min(1f)]
@@ -24,6 +26,7 @@ public class Movement : MonoBehaviour
     Vector3 pickupOffset;
     [SerializeField]
     float throwPower;
+    public GroundChecker groundCheck;
     Rigidbody2D pickedObject;
     bool canJump;
     Vector2 pickingDirection;
@@ -31,6 +34,7 @@ public class Movement : MonoBehaviour
     bool canPickUp;
     Animator anim;
     SpriteRenderer spr;
+    bool wantJump;
 
 
     void Start()
@@ -42,6 +46,7 @@ public class Movement : MonoBehaviour
         pickingDirection = Vector3.left;
         previousPosition = transform.position;
         pickedObject = null;
+        wantJump = false;
     }
 
     // Update is called once per frame
@@ -62,6 +67,10 @@ public class Movement : MonoBehaviour
             pickedObject.transform.position = transform.position + pickupOffset;
         }
         CharFlip();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            wantJump = true;
+        }
     }
 
     private void FixedUpdate()
@@ -69,7 +78,7 @@ public class Movement : MonoBehaviour
         if (!dead)
         {
             Move();
-           
+
         }
 
         if (movementInput.x < 0)
@@ -91,10 +100,11 @@ public class Movement : MonoBehaviour
         {
             body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, decelerationSpeed * Time.deltaTime), body.velocity.y);
         }
-        body.AddForce(movementInput * movementSpeed, ForceMode2D.Force);
-        if (Input.GetKey(KeyCode.Space) && !dead)
+        body.AddForce((canJump ? movementInput * movementSpeed : movementInput * (movementSpeed * airMovMod)), ForceMode2D.Force);
+        if (wantJump)
         {
             Jump();
+            wantJump = false;
         }
 
     }
@@ -110,9 +120,17 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Contains("Level") && collision.transform.position.y < transform.position.y)
+        if (groundCheck.onGround)
         {
             canJump = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (groundCheck.onGround)
+        {
+            canJump = false;
         }
     }
 
@@ -166,7 +184,7 @@ public class Movement : MonoBehaviour
         {
             canPickUp = true;
             pickedObject.transform.SetParent(null);
-            pickedObject.AddForce(pickingDirection * throwPower,ForceMode2D.Impulse);
+            pickedObject.AddForce(pickingDirection * throwPower, ForceMode2D.Impulse);
             pickedObject = null;
         }
 
