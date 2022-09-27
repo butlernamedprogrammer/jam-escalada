@@ -23,6 +23,5 @@ public class SinkingCode : MonoBehaviour
     private void FixedUpdate()
     {
         buoy.density -= decreases;
-
     }
 }
