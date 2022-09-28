@@ -7,8 +7,8 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     private float pauseTimeScale;
     float originalTimeScale;
-    GameObject pauseScreen;
-    bool IsPaused;
+    public GameObject pauseScreen;
+    public bool IsPaused;
     void Start()
     {
         originalTimeScale = Time.timeScale;
@@ -18,15 +18,12 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !IsPaused)
+        if (Input.GetKeyDown(KeyCode.P) )
         {
-            pauseScreen.SetActive(true);
-            Time.timeScale = pauseTimeScale;
+            Time.timeScale = IsPaused ? originalTimeScale : pauseTimeScale;
+            IsPaused = !IsPaused;
+            pauseScreen.SetActive(IsPaused);
         }
-        if (Input.GetKeyDown(KeyCode.P) && IsPaused)
-        {
-            pauseScreen.SetActive(false);
-            Time.timeScale = originalTimeScale;
-        }
+        
     }
 }

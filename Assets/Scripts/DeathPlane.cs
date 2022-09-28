@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathPlane : MonoBehaviour
 {
-    public Animator deathPanelAnimator;
+    public int levelSelection;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,11 @@ public class DeathPlane : MonoBehaviour
 
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.otherCollider.tag.Contains("Player"))
+        if (collision.tag.Contains("Player"))
         {
-            deathPanelAnimator.Play("GameOver");
+            SceneManager.LoadScene(levelSelection);
         }
     }
 }

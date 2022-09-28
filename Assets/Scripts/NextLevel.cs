@@ -21,7 +21,7 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.attachedRigidbody.tag.Contains("Player"))
+        if (collision.tag.Contains("Player"))
         {
             SceneManager.LoadScene(nextLevelIndex);
         }

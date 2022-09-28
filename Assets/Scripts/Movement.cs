@@ -168,7 +168,6 @@ public class Movement : MonoBehaviour
                 RaycastHit2D tryPick;
                 if (canPickUp && (tryPick = Physics2D.Raycast(rayIni, pickingDirection, pickupDistance, pickMask)))
                 {
-                    Debug.Log(transform.localScale.x);
                     canPickUp = false;
                     pickedObject = tryPick.transform.GetComponent<Rigidbody2D>();
                     tryPick.transform.parent = transform;

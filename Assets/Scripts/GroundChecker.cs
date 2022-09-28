@@ -18,7 +18,7 @@ public class GroundChecker : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.attachedRigidbody.transform.tag.Contains("Level"))
+        if (collision.transform.tag.Contains("Level"))
         {
             onGround=true;
         }

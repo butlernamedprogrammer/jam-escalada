@@ -8,9 +8,14 @@ using UnityEngine.UI;
 public class AudMixer : MonoBehaviour
 {
     public AudioMixer mix;
+    Slider slider;
     // Start is called before the first frame update
-    public void SetVolume(float sliderValue)
+    private void Start()
     {
-        mix.SetFloat("MasterVolume", Mathf.Log10(sliderValue * 20));
+        slider = GetComponent<Slider>();
+    }
+    public void SetVolume(float soundLevel)
+    { 
+        mix.SetFloat("musicVol", soundLevel);
     }
 }
