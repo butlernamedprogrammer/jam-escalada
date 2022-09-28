@@ -209,6 +209,7 @@ public class Movement : MonoBehaviour
         anim.SetFloat("AnimSpeed Mod", 1 / (Mathf.Abs((transform.position.x - previousPosition.x) / Time.fixedDeltaTime)));
         anim.SetFloat("MovY", (transform.position.y - previousPosition.y) / Time.fixedDeltaTime);
         anim.SetBool("Carrying", !canPickUp);
+        anim.SetBool("CanJump", canJump);
     }
 
     public void CharFlip()

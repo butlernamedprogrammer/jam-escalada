@@ -6,6 +6,7 @@ public class ShakeTrigger : MonoBehaviour
 {
     public Cinemachine.CinemachineVirtualCamera cam;
     private Animator camAnimator;
+    private Rigidbody2D level;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,21 @@ public class ShakeTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnAnimatorIK(int layerIndex)
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.attachedRigidbody.tag.Contains("Player"))
-        {   
-            camAnimator.Play("Shake");
+        {
+            collision.attachedRigidbody.bodyType = RigidbodyType2D.Dynamic;
+            collision.gameObject.GetComponent<SinkingCode>().enabled=true;
+            if (collision.attachedRigidbody.tag.Contains("Player"))
+            {
+                camAnimator.Play("Shake");
+            }
         }
     }
 }
