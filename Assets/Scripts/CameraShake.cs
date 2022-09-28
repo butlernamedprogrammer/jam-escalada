@@ -14,7 +14,6 @@ public class CameraShake : MonoBehaviour
     public float frecuencia;
     public float amplitud;
     private Vector3 _originalCamPos;
-    public float shakeFreq;
     private float shakeEndTime;
     bool afterShake;
     // Start is called before the first frame update

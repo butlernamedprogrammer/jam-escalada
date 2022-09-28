@@ -31,4 +31,9 @@ public class NextLevel : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void ToSameLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

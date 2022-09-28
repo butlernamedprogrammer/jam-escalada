@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     float jumpForce;
     [SerializeField, Min(3)]
     float jumpForceCarrying;
-    [SerializeField, Min(1f)]
+    [SerializeField, Min(0.75f)]
     float pickupDistance;
     [SerializeField]
     Vector3 pickupOffset;
@@ -149,7 +149,7 @@ public class Movement : MonoBehaviour
     private void CheckPickable()
     {
         LayerMask pickMask = LayerMask.GetMask("Pickable");
-        Vector2 rayIni = new Vector2(transform.position.x, transform.position.y);
+        Vector2 rayIni = new Vector2(transform.position.x, transform.position.y+transform.localScale.y/2f);
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!canPickUp)

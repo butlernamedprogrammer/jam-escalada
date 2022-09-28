@@ -6,7 +6,7 @@ public class ShakeTrigger : MonoBehaviour
 {
     public Cinemachine.CinemachineVirtualCamera cam;
     private Animator camAnimator;
-    private Rigidbody2D level;
+    public Rigidbody2D level;
     // Start is called before the first frame update
     void Start()
     {
